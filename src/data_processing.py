@@ -44,7 +44,3 @@ x_columns = [c for c in df.columns if c != 'Churn']
 _, X_train, y_train = get_xy(train, 'Churn', x_label=x_columns, oversample=True)
 _, X_val, y_val = get_xy(val, 'Churn', x_label=x_columns, oversample=False)
 _, X_test, y_test = get_xy(test, 'Churn', x_label=x_columns, oversample=True)
-
-
-print(sum(y_train == 1))
-print(sum(y_train == 0))
