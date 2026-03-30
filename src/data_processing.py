@@ -10,10 +10,9 @@ from imblearn.over_sampling import RandomOverSampler
 import pandas as pd
 import numpy as np
 
+
 df = pd.read_csv(r'D:\Machine_Learning\Telco_churn\Data\processed\cleaned.csv')
 
-
-train, val, test = np.split(df, [int(0.6 * len(df)), int( 0.8 * len(df))])
 # function to get xy
 
 
@@ -41,6 +40,9 @@ def get_xy(dataframe, y_label, x_label=None,  oversample=False):
 
 
 x_columns = [c for c in df.columns if c != 'Churn']
-_, X_train, y_train = get_xy(train, 'Churn', x_label=x_columns, oversample=True)
-_, X_val, y_val = get_xy(val, 'Churn', x_label=x_columns, oversample=False)
-_, X_test, y_test = get_xy(test, 'Churn', x_label=x_columns, oversample=True)
+
+# function to split data 
+def train_split(df):
+    if len(df) == 0:
+        raise ValueError('input can not be empty')
+    return np.split(df, [int(0.6 * len(df)), int( 0.8 * len(df))])
